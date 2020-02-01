@@ -196,3 +196,7 @@ ul.label {
 td {
     width: 400px;
 }
+
+.fieldError {
+  background-color: #ff8080;
+}
