@@ -16,9 +16,6 @@
   <form th:action="@{/order}" th:object="${userOrderForm}" class="form-horizontal" method="post">
     <h1>概算お見積り結果</h1>
     <div class="col-sm-12">
-<!--      <h2>概算お見積り結果は<span th:text="${price}"></span>円です。</h2>-->
-<!--      <h2><span th:text="${distanceprice}"></span>+<span th:text="${truckprice}"></span>+<span th:text="${optionprice}"></span></h2>-->
-
       <h4>概算お見積もり価格</h4>
       <table border="1" width="100%" height="200" valign="middle">
         <col span="1" width="40%">
@@ -45,7 +42,6 @@
         </tr>
       </table>
       <br>
-
       <h4>個人情報</h4>
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
