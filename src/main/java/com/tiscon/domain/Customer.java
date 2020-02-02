@@ -6,6 +6,10 @@ public class Customer implements Serializable {
 
     private Integer customerId;
 
+    private  String oldAddnum;
+
+    private  String newAddnum;
+
     private String oldPrefectureId;
 
     private String newPrefectureId;
@@ -27,6 +31,23 @@ public class Customer implements Serializable {
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
+
+    public String getOldAddnum() {
+        return oldAddnum;
+    }
+
+    public void setOldAddnum(String oldAddnum) {
+        this.oldAddnum = oldAddnum;
+    }
+
+    public String getNewAddnum() {
+        return newAddnum;
+    }
+
+    public void setNewAddnum(String newAddnum) {
+        this.newAddnum = newAddnum;
+    }
+
 
     public String getOldPrefectureId() {
         return oldPrefectureId;

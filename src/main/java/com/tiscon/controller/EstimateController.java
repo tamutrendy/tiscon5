@@ -125,7 +125,6 @@ public class EstimateController {
      */
     @PostMapping(value = "result", params = "calculation")
     String calculation(UserOrderForm userOrderForm, Model model) {
-
         //料金の計算を行う。
         UserOrderDto dto = new UserOrderDto();
         BeanUtils.copyProperties(userOrderForm, dto);

@@ -39,6 +39,13 @@
           <td><span th:text="*{email}"></span></td>
           <input type="hidden" name="email" id="email" th:value="*{email}"/>
         </tr>
+
+        <tr>
+          <th>転居元郵便番号</th>
+          <td><span th:text="*{oldAddnum}"></span></td>
+          <input type="hidden" name="oldAddnum" id="oldAddnum" th:value="*{oldAddnum}"/>
+        </tr>
+
         <tr>
           <th>転居元住所（都道府県）</th>
           <td>
@@ -51,6 +58,13 @@
           <td><span th:text="*{oldAddress}"></span></td>
           <input type="hidden" name="oldAddress" id="oldAddress" th:value="*{oldAddress}"/>
         </tr>
+
+        <tr>
+          <th>転居先郵便番号</th>
+          <td><span th:text="*{newAddnum}"></span></td>
+          <input type="hidden" name="newAddnum" id="newAddnum" th:value="*{newAddnum}"/>
+        </tr>
+
         <tr>
           <th>転居先住所（都道府県）</th>
           <td>

@@ -39,6 +39,15 @@
           <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message"></td>
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="oldAddnum">転居元郵便番号　<font class="worm">必須</font></label>
+        <input type="text" id="oldAddnum" name="oldAddnum" th:field="*{oldAddnum}" class="form-control" value="" placeholder="530xxxx"/>
+        <div class="col-sm-3">
+          <td th:if="${#fields.hasErrors('oldAddnum')}" th:errors="*{oldAddnum}" class="error-message"></td>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="oldPrefectureId">転居元住所（都道府県）</label>
         <select id="oldPrefectureId" name="oldPrefectureId" class="form-control">
@@ -52,6 +61,15 @@
           <td th:if="${#fields.hasErrors('oldAddress')}" th:errors="*{oldAddress}" class="error-message"></td>
         </div>
       </div>
+
+      <div class="form-group">
+        <label for="newAddnum">転居先郵便番号　<font class="worm">必須</font></label>
+        <input type="text" id="newAddnum" name="newAddnum" th:field="*{newAddnum}" class="form-control" value="" placeholder="150xxxx"/>
+        <div class="col-sm-3">
+          <td th:if="${#fields.hasErrors('newAddnum')}" th:errors="*{newAddnum}" class="error-message"></td>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="newPrefectureId">転居先住所（都道府県）</label>
         <select id="newPrefectureId" name="newPrefectureId" class="form-control">
