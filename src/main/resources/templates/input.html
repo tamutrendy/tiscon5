@@ -28,7 +28,7 @@
       </div>
       <div class="form-group">
         <label for="tel">連絡先TEL　<font class="worm">必須</font></label>
-        <input type="tel" id="tel" name="tel" th:field="*{tel}" class="form-control" value="" placeholder="080xxxxyyyy"/>
+        <input type="tel" id="tel" name="tel" th:field="*{tel}" class="form-control" maxlength="11" value="" placeholder="080xxxxyyyy"/>
         <div class="col-sm-3">
           <td th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}" class="error-message"></td>
         </div>
