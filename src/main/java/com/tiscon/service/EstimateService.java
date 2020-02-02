@@ -7,6 +7,7 @@ import com.tiscon.domain.Customer;
 import com.tiscon.domain.CustomerOptionService;
 import com.tiscon.domain.CustomerPackage;
 import com.tiscon.dto.UserOrderDto;
+import com.tiscon.form.UserOrderForm;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,9 +68,9 @@ public class EstimateService {
      * 見積もり依頼に応じた概算見積もりを行う。
      *
      * @param dto 見積もり依頼情報
-     * @return 概算見積もり結果の料金
+     * @return 概算見積もり距離あたりの料金
      */
-    public Integer getPrice(UserOrderDto dto) {
+    public Integer getDistancePrice(UserOrderDto dto) {
         double distance = estimateDAO.getDistance(dto.getOldPrefectureId(), dto.getNewPrefectureId());
         // 小数点以下を切り捨てる
         int distanceInt = (int) Math.floor(distance);
@@ -77,6 +78,16 @@ public class EstimateService {
         // 距離当たりの料金を算出する
         int priceForDistance = distanceInt * PRICE_PER_DISTANCE;
 
+        return priceForDistance;
+    }
+
+    /**
+     * 見積もり依頼に応じた概算見積もりを行う。
+     *
+     * @param dto 見積もり依頼情報
+     * @return 概算見積もりトラックの料金
+     */
+    public Integer getTruckPrice(UserOrderDto dto) {
         int boxes = getBoxForPackage(dto.getBox(), PackageType.BOX)
                 + getBoxForPackage(dto.getBed(), PackageType.BED)
                 + getBoxForPackage(dto.getBicycle(), PackageType.BICYCLE)
@@ -85,6 +96,16 @@ public class EstimateService {
         // 箱に応じてトラックの種類が変わり、それに応じて料金が変わるためトラック料金を算出する。
         int pricePerTruck = estimateDAO.getPricePerTruck(boxes);
 
+        return  pricePerTruck;
+    }
+
+    /**
+     * 見積もり依頼に応じた概算見積もりを行う。
+     *
+     * @param dto 見積もり依頼情報
+     * @return 概算見積もりオプションの料金
+     */
+    public Integer getOptionPrice(UserOrderDto dto) {
         // オプションサービスの料金を算出する。
         int priceForOptionalService = 0;
 
@@ -92,7 +113,7 @@ public class EstimateService {
             priceForOptionalService = estimateDAO.getPricePerOptionalService(OptionalServiceType.WASHING_MACHINE.getCode());
         }
 
-        return priceForDistance + pricePerTruck + priceForOptionalService;
+        return priceForOptionalService;
     }
 
     /**

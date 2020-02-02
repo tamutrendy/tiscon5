@@ -16,7 +16,36 @@
   <form th:action="@{/order}" th:object="${userOrderForm}" class="form-horizontal" method="post">
     <h1>概算お見積り結果</h1>
     <div class="col-sm-12">
-      <h2>概算お見積り結果は<span th:text="${price}"></span>円です。</h2>
+<!--      <h2>概算お見積り結果は<span th:text="${price}"></span>円です。</h2>-->
+<!--      <h2><span th:text="${distanceprice}"></span>+<span th:text="${truckprice}"></span>+<span th:text="${optionprice}"></span></h2>-->
+
+      <h4>概算お見積もり価格</h4>
+      <table border="1" width="100%" height="200" valign="middle">
+        <col span="1" width="40%">
+        <col span="2">
+        <tr>
+          <th bgcolor="#c0c0c0"> 内訳</th>
+          <th bgcolor="#c0c0c0"> 価格(円)</th>
+        </tr>
+        <tr>
+          <td bgcolor="#ffffff">　引越し距離</td>
+          <td bgcolor="#ffffff">　<span th:text="${distanceprice}"></span></td>
+        </tr>
+        <tr>
+          <td bgcolor="#ffffff">　トラック</td>
+          <td bgcolor="#ffffff">　<span th:text="${truckprice}"></span></td>
+        </tr>
+        <tr>
+          <td bgcolor="#ffffff">　オプション</td>
+          <td bgcolor="#ffffff">　<span th:text="${optionprice}"></span></td>
+        </tr>
+        <tr>
+          <th bgcolor="#b0c4bd">　合計価格</th>
+          <th bgcolor="#b0c4bd">　<span th:text="${price}"></span></th>
+        </tr>
+      </table>
+      <br>
+
       <h4>個人情報</h4>
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
@@ -109,6 +138,7 @@
         </tr>
         </tbody>
       </table>
+      <br><h2>概算お見積り結果は<span th:text="${price}"></span>円です。</h2><br>
       <div class="form-group">
         <div class="text-center">
           <button type="submit" name="backToConfirm" class="btn btn-primary">戻る</button>
