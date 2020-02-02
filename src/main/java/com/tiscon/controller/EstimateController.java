@@ -49,7 +49,12 @@ public class EstimateController {
     @GetMapping("input")
     String input(Model model) {
         if (!model.containsAttribute("userOrderForm")) {
-            model.addAttribute("userOrderForm", new UserOrderForm());
+            UserOrderForm userorderform = new UserOrderForm();
+            userorderform.setBed("0");
+            userorderform.setBicycle("0");
+            userorderform.setBox("0");
+            userorderform.setWashingMachine("0");
+            model.addAttribute("userOrderForm", userorderform);
         }
 
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
