@@ -7,6 +7,7 @@
   <link rel="stylesheet" th:href="@{http://fonts.googleapis.com/css?family=Exo:900}"
         href="http://fonts.googleapis.com/css?family=Exo:900"/>
   <link rel="stylesheet" th:href="@{/css/main.css}" href="../static/css/main.css">
+  <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 </head>
 <body>
 <nav th:insert="header.html :: header"></nav>
@@ -42,7 +43,7 @@
 
       <div class="form-group">
         <label for="oldAddnum">転居元郵便番号　<font class="worm">必須</font></label>
-        <input type="text" id="oldAddnum" name="oldAddnum" th:field="*{oldAddnum}" class="form-control" value="" placeholder="530xxxx"/>
+        <input type="text" id="oldAddnum" name="oldAddnum" th:field="*{oldAddnum}" class="form-control" maxlength="7" value="" onKeyUp="AjaxZip3.zip2addr(this,'','oldPrefectureId','oldAddress');" placeholder="530xxxx"/>
         <div class="col-sm-3">
           <td th:if="${#fields.hasErrors('oldAddnum')}" th:errors="*{oldAddnum}" class="error-message"></td>
         </div>
@@ -51,7 +52,7 @@
       <div class="form-group">
         <label for="oldPrefectureId">転居元住所（都道府県）</label>
         <select id="oldPrefectureId" name="oldPrefectureId" class="form-control">
-          <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{oldPrefectureId}">[[${prefecture.prefectureName}]]</option>
+          <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{oldPrefectureId}" >[[${prefecture.prefectureName}]]</option>
         </select>
       </div>
       <div class="form-group">
@@ -64,7 +65,7 @@
 
       <div class="form-group">
         <label for="newAddnum">転居先郵便番号　<font class="worm">必須</font></label>
-        <input type="text" id="newAddnum" name="newAddnum" th:field="*{newAddnum}" class="form-control" value="" placeholder="150xxxx"/>
+        <input type="text" id="newAddnum" name="newAddnum" th:field="*{newAddnum}" class="form-control" maxlength="7" onKeyUp="AjaxZip3.zip2addr(this,'','newPrefectureId','newAddress');" value="" placeholder="150xxxx"/>
         <div class="col-sm-3">
           <td th:if="${#fields.hasErrors('newAddnum')}" th:errors="*{newAddnum}" class="error-message"></td>
         </div>
